@@ -175,7 +175,7 @@ const UserDetails = () => {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <Typography variant="h6" gutterBottom>
-                Bienvenido: {correoUsuario}
+                Bienvenido, {correoUsuario}
               </Typography>
             </Grid>
             <Grid item xs={12}>

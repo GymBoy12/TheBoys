@@ -9,6 +9,7 @@ import Admins from './componentes/Admins';
 import Mensualidades from './componentes/Mensualidades';
 import NavBar from './componentes/NavBar';
 import UserDetails from './componentes/UserDetails';
+import PDFPage from './componentes/reports/pdfPages';
 
 const auth = getAuth(appFirebase);
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="/mensualidades" element={<Mensualidades />} />
           <Route path="/admins" element={<Admins />} />
           <Route path="/user/:userId/:correoUsuario" element={<UserDetails />} />
+          <Route path="/pdf" element={<PDFPage />} /> 
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
       )}

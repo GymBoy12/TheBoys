@@ -1,10 +1,8 @@
-// Import the functions you need from the SDKs you need
+// credenciales.jsx
 import { initializeApp } from "firebase/app";
-//import { getFirestore } from 'firebase/firestore';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore } from 'firebase/firestore'; // Importa Firestore
 
-// Your web app's Firebase configuration
+// Tu configuración de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCNuBBP3dA_7EHsfeewosiZAN1COqQDpX8",
   authDomain: "colemangym-11ff0.firebaseapp.com",
@@ -14,6 +12,8 @@ const firebaseConfig = {
   appId: "1:782070159487:web:23d99de9509999e923474a"
 };
 
-// Initialize Firebase
+// Inicializa Firebase
 const appFirebase = initializeApp(firebaseConfig);
-export default appFirebase;
+const db = getFirestore(appFirebase); // Inicializa Firestore
+
+export { db };
