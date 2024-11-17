@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 import appFirebase from './credenciales';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import Login from './componentes/Login';
 import Home from './componentes/Home';
 import Admins from './componentes/Admins';
 import Mensualidades from './componentes/Mensualidades';
 import NavBar from './componentes/NavBar';
 import UserDetails from './componentes/UserDetails';
-import PDFPage from './componentes/reports/pdfPages';
+import EarningsPage from './componentes/EarningsPage'; // Importa el nuevo componente
+import Verificar from './componentes/Verificar';  // Importar Verificar
+import QRScannerCliente from './componentes/qr/QRScannerCliente';
 
 const auth = getAuth(appFirebase);
 
@@ -42,13 +44,16 @@ function App() {
           <Route path="/mensualidades" element={<Mensualidades />} />
           <Route path="/admins" element={<Admins />} />
           <Route path="/user/:userId/:correoUsuario" element={<UserDetails />} />
-          <Route path="/pdf" element={<PDFPage />} /> 
+          <Route path="/earnings" element={<EarningsPage />} />
+          <Route path="/verificar" element={<Verificar />} />  {/* Ruta para Verificar */}
+          <Route path="/qr-scanner" element={<QRScannerCliente />} />
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
       )}
       {!usuario && (
-        <Routes >
+        <Routes>
           <Route path="/login" element={<Login onLogin={setUsuario} />} />
+          <Route path="/verificar" element={<Verificar />} />  {/* Ruta para Verificar */}
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       )}

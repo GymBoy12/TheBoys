@@ -49,6 +49,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from "react-router-dom"; // Importa useNavigate
 import { adjustToLocalTime, formatDate } from './DateUtils';
+import PDFReportButton from "./reportes/PDFReportButton";
 
 const auth = getAuth(appFirebase);
 const db = getFirestore(appFirebase);
@@ -439,6 +440,14 @@ const Home = ({ correoUsuario }) => {
               </Grid>
             </Grid>
             <Typography variant="h2" align="center" mt={4}>Lista de Clientes</Typography>
+            <PDFReportButton />
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => navigate('/qr-scanner')}
+            >
+              Abrir Escáner QR
+            </Button>
             <Table>
               <TableHead>
                 <TableRow>

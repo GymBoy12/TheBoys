@@ -16,7 +16,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 import { adjustToLocalTime, formatDate } from './DateUtils';
 
-const Consultas = ({ userId }) => {
+const Consultas = ({ clienteId }) => {
   const [mensualidades, setMensualidades] = useState([]);
   const [mensualidadMasAlta, setMensualidadMasAlta] = useState(null);
 
@@ -24,7 +24,7 @@ const Consultas = ({ userId }) => {
     const fetchMensualidades = async () => {
       try {
         const db = getFirestore();
-        const mensualidadesQuery = query(collection(db, 'mensualidades'), where('clienteId', '==', userId));
+        const mensualidadesQuery = query(collection(db, 'mensualidades'), where('clienteId', '==', clienteId));
         const snapshot = await getDocs(mensualidadesQuery);
         const mensualidadesData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setMensualidades(mensualidadesData);
@@ -42,9 +42,7 @@ const Consultas = ({ userId }) => {
     };
 
     fetchMensualidades();
-  }, [userId]); // Solo se ejecuta al cambiar userId
-
-
+  }, [clienteId]); // Solo se ejecuta al cambiar clienteId
 
   const renderMensualidadesPorAnio = (anio) => {
     const mensualidadesPorAnio = mensualidades.filter(mensualidad => {
